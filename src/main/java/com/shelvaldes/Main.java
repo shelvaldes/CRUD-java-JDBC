@@ -10,15 +10,19 @@ import java.sql.Statement;
 public class Main {
     public static void main(String[] args) {
 
-        Connection myCon = null;
-        Statement myStamt = null;
-        ResultSet myRes = null;
+        String url = "jdbc:mariadb://localhost:3306/javacursodb";
+        String user = "admin";
+        String pass = "1234";
 
-        try {
-            myCon = DriverManager.getConnection("jdbc:mariadb://localhost:3306/javacursodb", "admin", "1234");
+        try (
+                Connection myCon = DriverManager.getConnection( url, user, pass);
+                Statement myStmt = myCon.createStatement();
+                ResultSet myRes = myStmt.executeQuery("SELECT * FROM employees");
+
+                ){
+
             System.out.println("Conectado a la base de datos");
-            myStamt = myCon.createStatement();
-            myRes = myStamt.executeQuery("SELECT * FROM employees");
+
             while (myRes.next()) {
                 System.out.println(myRes.getString("first_name"));
             }
