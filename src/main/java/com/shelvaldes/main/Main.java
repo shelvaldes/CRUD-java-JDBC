@@ -13,6 +13,20 @@ public class Main {
 
         try ( Connection myConn = DatabaseConnection.getInstance()){
             Repository<Employee> repository = new EmployeeRepository();
+
+            System.out.println("--Listando--");
+            repository.findAll().forEach(System.out::println);
+
+            System.out.println("--Insertando un empleado--");
+            Employee employee = new Employee();
+            employee.setFirst_name("Celilio");
+            employee.setPa_surname("Valdés");
+            employee.setMa_surname("Herrera");
+            employee.setEmail("gato@shelvaldes.com");
+            employee.setSalary(70000F);
+            repository.save(employee);
+
+            System.out.println("--Nuevo empleado insertado--");
             repository.findAll().forEach(System.out::println);
         }
     }
