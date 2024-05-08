@@ -44,27 +44,24 @@ public class EmployeeRepository implements Repository<Employee> {
 
     @Override
     public void save(Employee employee) throws SQLException {
-        if (employee.getId() != null ){
-            String sql = "UPDATE employees SET first_name = ?, pa_surname = ?, ma_surname = ?, email = ?, salary = ? WHERE id = ?";
-            try (PreparedStatement myStmt = getConnection().prepareStatement(sql)) {
-                myStmt.setString(1, employee.getFirst_name());
-                myStmt.setString(2, employee.getPa_surname());
-                myStmt.setString(3, employee.getMa_surname());
-                myStmt.setString(4, employee.getEmail());
-                myStmt.setFloat(5, employee.getSalary());
-                myStmt.setInt(6, employee.getId());
-                myStmt.executeUpdate();
-            }
+        String sql;
+        if (employee.getId() != null && employee.getId()>0 ){
+            sql = "UPDATE employees SET first_name = ?, pa_surname = ?, ma_surname = ?, email = ?, salary = ? WHERE id = ?";
         } else {
-            String sql = "INSERT INTO employees (first_name, pa_surname, ma_surname, email, salary) VALUES (?, ?, ?, ?, ?)";
-            try (PreparedStatement myStmt = getConnection().prepareStatement(sql)) {
-                myStmt.setString(1, employee.getFirst_name());
-                myStmt.setString(2, employee.getPa_surname());
-                myStmt.setString(3, employee.getMa_surname());
-                myStmt.setString(4, employee.getEmail());
-                myStmt.setFloat(5, employee.getSalary());
-                myStmt.executeUpdate();
+            sql = "INSERT INTO employees (first_name, pa_surname, ma_surname, email, salary) VALUES (?, ?, ?, ?, ?)";
+        }
+        try (PreparedStatement myStmt = getConnection().prepareStatement(sql)) {
+            myStmt.setString(1, employee.getFirst_name());
+            myStmt.setString(2, employee.getPa_surname());
+            myStmt.setString(3, employee.getMa_surname());
+            myStmt.setString(4, employee.getEmail());
+            myStmt.setFloat(5, employee.getSalary());
+            if (employee.getId() != null && employee.getId()>0){
+                myStmt.setInt(6, employee.getId());
             }
+            myStmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 

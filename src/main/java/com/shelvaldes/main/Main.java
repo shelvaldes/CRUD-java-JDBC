@@ -19,11 +19,12 @@ public class Main {
 
             System.out.println("--Insertando un empleado--");
             Employee employee1 = new Employee();
-            employee1.setFirst_name("Javier");
-            employee1.setPa_surname("Valdés");
-            employee1.setMa_surname("Herrera");
-            employee1.setEmail("javi@shelvaldes.com");
-            employee1.setSalary(70000F);
+            employee1.setId(null);
+            employee1.setFirst_name("Padme");
+            employee1.setPa_surname("Hernández");
+            employee1.setMa_surname("Valdés");
+            employee1.setEmail("queso@shelvaldes.com");
+            employee1.setSalary(60000F);
             repository.save(employee1);
 
             System.out.println("--Empleado insertado--");
@@ -34,7 +35,7 @@ public class Main {
             employee2.setId(7);
             employee2.setFirst_name("Cecilio");
             employee2.setPa_surname("Valdés");
-            employee2.setMa_surname("Herrera");
+            employee2.setMa_surname("morán");
             employee2.setEmail("gato@shelvaldes.com");
             employee2.setSalary(80000F);
             repository.save(employee2);
