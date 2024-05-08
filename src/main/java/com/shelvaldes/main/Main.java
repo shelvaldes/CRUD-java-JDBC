@@ -18,16 +18,33 @@ public class Main {
             repository.findAll().forEach(System.out::println);
 
             System.out.println("--Insertando un empleado--");
-            Employee employee = new Employee();
-            employee.setFirst_name("Celilio");
-            employee.setPa_surname("Valdés");
-            employee.setMa_surname("Herrera");
-            employee.setEmail("gato@shelvaldes.com");
-            employee.setSalary(70000F);
-            repository.save(employee);
+            Employee employee1 = new Employee();
+            employee1.setFirst_name("Javier");
+            employee1.setPa_surname("Valdés");
+            employee1.setMa_surname("Herrera");
+            employee1.setEmail("javi@shelvaldes.com");
+            employee1.setSalary(70000F);
+            repository.save(employee1);
 
-            System.out.println("--Nuevo empleado insertado--");
+            System.out.println("--Empleado insertado--");
             repository.findAll().forEach(System.out::println);
+
+            //Aquí quiero hardcodear un update
+            Employee employee2 = new Employee();
+            employee2.setId(7);
+            employee2.setFirst_name("Cecilio");
+            employee2.setPa_surname("Valdés");
+            employee2.setMa_surname("Herrera");
+            employee2.setEmail("gato@shelvaldes.com");
+            employee2.setSalary(80000F);
+            repository.save(employee2);
+
+            System.out.println("Empleado actualizado");
+
+
+            System.out.println("--Listando después de actualizar--");
+            repository.findAll().forEach(System.out::println);
+
         }
     }
 }

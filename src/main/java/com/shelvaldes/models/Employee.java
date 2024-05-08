@@ -25,7 +25,6 @@ public class Employee {
     public Integer getId() {
         return id;
     }
-
     public void setId(Integer id) {
         this.id = id;
     }
@@ -33,7 +32,6 @@ public class Employee {
     public String getFirst_name() {
         return first_name;
     }
-
     public void setFirst_name(String first_name) {
         this.first_name = first_name;
     }
@@ -41,7 +39,6 @@ public class Employee {
     public String getPa_surname() {
         return pa_surname;
     }
-
     public void setPa_surname(String pa_surname) {
         this.pa_surname = pa_surname;
     }
@@ -49,7 +46,6 @@ public class Employee {
     public String getMa_surname() {
         return ma_surname;
     }
-
     public void setMa_surname(String ma_surname) {
         this.ma_surname = ma_surname;
     }
@@ -57,7 +53,6 @@ public class Employee {
     public String getEmail() {
         return email;
     }
-
     public void setEmail(String email) {
         this.email = email;
     }
@@ -65,7 +60,6 @@ public class Employee {
     public Float getSalary() {
         return salary;
     }
-
     public void setSalary(Float salary) {
         this.salary = salary;
     }
