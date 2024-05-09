@@ -66,7 +66,12 @@ public class EmployeeRepository implements Repository<Employee> {
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Integer id) throws SQLException {
+
+        try ( PreparedStatement myStmt = getConnection().prepareStatement("DELETE FROM employees WHERE id = ?") ){
+            myStmt.setInt(1, id);
+            myStmt.executeUpdate();
+        }
 
     }
 
